@@ -42,7 +42,11 @@ class CustomHttpRequestHandler(BaseHTTPRequestHandler):
                 self.send_response(200)
                 self.send_header("Content-type", "text/html")
                 self.end_headers()
-                self.wfile.write(file.read())
+                content = file.read()
+                self.wfile.write(content)
+                print(
+                    "Served content from example.html:\n", content.decode()
+                )  # Debug output
                 file.close()
                 return
         else:
@@ -51,7 +55,11 @@ class CustomHttpRequestHandler(BaseHTTPRequestHandler):
                 self.send_response(200)
                 self.send_header("Content-type", "text/html")
                 self.end_headers()
-                self.wfile.write(page.read())
+                content = page.read()
+                self.wfile.write(content)
+                print(
+                    f"Served content from {self.path}:\n", content.decode()
+                )  # Debug output
                 page.close()
             except OSError:
                 self.send_error(404, "Not found")
