@@ -66,8 +66,8 @@ class CustomHttpRequestHandler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    ws = HTTPServer(("127.0.0.1", 8000), CustomHttpRequestHandler)
-    print(f"Started server on port 8000")
+    ws = HTTPServer(("127.0.0.1", 80), CustomHttpRequestHandler)
+    print(f"Started server on port 80")
 
     try:
         ws.serve_forever()
